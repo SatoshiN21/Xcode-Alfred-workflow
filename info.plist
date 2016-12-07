@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>jp.satoshin21.hatenadiary.openterminal</string>
+	<key>connections</key>
+	<dict>
+		<key>97ED6821-63D8-416A-B872-4ACF11189706</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>03FE8AD2-3F9E-48A9-ADDD-9956B0F61A9A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>SatoshiN21</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Open Terminal from Xcode</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>1310720</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.dt.Xcode</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>97ED6821-63D8-416A-B872-4ACF11189706</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+
+tell application "Xcode" to set workspacePath to path of workspace document 1set originalDelimiters to text item delimiters of AppleScript -- オリジナルの区切り文字をとっておくset text item delimiters of AppleScript to "/"set textItems to every text item of workspacePathset splitDirPath to items 1 thru -2 of textItemsset text item delimiters of AppleScript to originalDelimiters -- 操作終了後にオリジナルの区切り文字に戻すlog splitDirPathset targetPath to ""repeat with splitPath in splitDirPath	if targetPath is not "" then		set targetPath to targetPath &amp; "/" &amp; splitPath	else		set targetPath to splitPath	end if	end repeattell application "Terminal"	activate	do script "cd " &amp; targetPathend tell
+
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>03FE8AD2-3F9E-48A9-ADDD-9956B0F61A9A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>delete deriveddata</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>delete DerivedData</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>9AEDEB29-3109-43E6-A6ED-B269252D3A7A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  -- your script here
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>2D4C7BB1-C673-4623-B851-7CC4B3612590</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>03FE8AD2-3F9E-48A9-ADDD-9956B0F61A9A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>340</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>2D4C7BB1-C673-4623-B851-7CC4B3612590</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+		<key>97ED6821-63D8-416A-B872-4ACF11189706</key>
+		<dict>
+			<key>xpos</key>
+			<integer>120</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>9AEDEB29-3109-43E6-A6ED-B269252D3A7A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>280</integer>
+			<key>ypos</key>
+			<integer>350</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
